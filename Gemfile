@@ -16,6 +16,7 @@ gem 'activerecord'
 gem 'rake'
 
 gem 'shotgun'
+gem 'twitter', :git => "https://github.com/sferik/twitter.git"
 
 group :test do
   gem 'faker'
