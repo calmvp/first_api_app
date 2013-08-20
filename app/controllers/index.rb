@@ -8,7 +8,7 @@ get '/:username' do
     username = @user.username
     @user.fetch_tweets(username)
   end
-  if @user.tweets_stale?
+  if @user.tweets_stale2?
      @user.fetch_tweets(username)
   end
   @tweets = @user.tweets.limit(10)
