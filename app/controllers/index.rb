@@ -19,3 +19,4 @@ end
 post '/' do
   redirect "/#{params[:username]}"
 end
+
