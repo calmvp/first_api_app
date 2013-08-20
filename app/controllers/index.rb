@@ -2,8 +2,8 @@ get '/' do
   erb :index
 end
 
-get '/:username' do
-  @user = TwitterUser.find_or_create_by_username(params[:username])
+post '/1' do
+    @user = TwitterUser.find_or_create_by_username(params[:username])
   if @user.tweets.empty?
     username = @user.username
     @user.fetch_tweets(username)
@@ -12,10 +12,9 @@ get '/:username' do
      @user.fetch_tweets(username)
   end
   @tweets = @user.tweets.limit(10)
-  erb :display
-end
-
-
-post '/' do
-  redirect "/#{params[:username]}"
+  if request.xhr? 
+    erb :_display, layout: false
+  else 
+    erb :_display
+  end
 end
